@@ -1,0 +1,27 @@
+[
+    {
+        "user" : {
+            "name": "",
+            "username": "",
+            "password":"",
+            "email": "",
+            "phone": "",
+            "location": "",
+            "created_at": "",
+            "items": [
+                {
+                    "posting": {
+                        "title":"",
+                        "description":"",
+                        "category":"",
+                        "location":"",
+                        "images": ["", "", ""],
+                        "price": "",
+                        "posted_at": "",
+                        "delivery": ""
+                    }
+                }
+            ]
+        }
+    }
+]
