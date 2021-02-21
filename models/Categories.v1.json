@@ -1,0 +1,26 @@
+{
+  "title": "Categories",
+  "type": "object",
+  "properties": {
+    "title": {
+      "type": "string"
+    },
+    "subCategories": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    }
+  },
+  "x-examples": {
+    "Category example": {
+      "title": "Furniture",
+      "subCategories": [
+        "Chairs",
+        "Sofas",
+        "Tables"
+      ]
+    }
+  },
+  "description": "Model for categories of items"
+}

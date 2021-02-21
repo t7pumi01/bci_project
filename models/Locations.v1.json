@@ -1,0 +1,26 @@
+{
+  "title": "Locations",
+  "type": "object",
+  "properties": {
+    "area": {
+      "type": "string"
+    },
+    "cities": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    }
+  },
+  "x-examples": {
+    "Location example": {
+      "area": "North Ostrobothnia",
+      "cities": [
+        "Oulu",
+        "Kempele",
+        "Kuusamo"
+      ]
+    }
+  },
+  "description": "Model for location of user's posting"
+}
