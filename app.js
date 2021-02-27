@@ -4,6 +4,8 @@ const passport = require('passport');
 
 const postRoute = require('./routes/postingRoute');
 const userRoute = require('./routes/userRoute');
+const categoryRoute = require('./routes/categoryRoute');
+const locationRoute = require('./routes/locationRoute');
 const api = require('./routes/api/index');
 
 require('./db')();
@@ -18,6 +20,8 @@ app.use(express.static(__dirname + '/public'));
 
 app.use('/post', postRoute);
 app.use('/user', userRoute);
+app.use('/locations', locationRoute);
+app.use('/categories', categoryRoute);
 app.use('/api', api);
 
 app.get('/', function (req, res) {
