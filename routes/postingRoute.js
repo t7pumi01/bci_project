@@ -14,10 +14,7 @@ router.get("/", function(req,res) {
 router.get("/location/:location", function(req,res) {
     db.Posting.find()
     .where('post.location').equals(req.params.location)
-    .then((postings) => { 
-        getUserInfo(postings.user_id);
-        res.json(postings).status(200);
-    })
+    .then(postings => res.json(postings).status(200))
     .catch(err => res.json(err).status(400))
 });
 
