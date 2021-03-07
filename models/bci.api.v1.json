@@ -1,0 +1,880 @@
+{
+  "openapi": "3.0.0",
+  "info": {
+    "title": "posting.api",
+    "version": "1.0",
+    "description": "User api"
+  },
+  "servers": [
+    {
+      "url": "https://bci-miina-project.herokuapp.com"
+    }
+  ],
+  "paths": {
+    "/user/register": {
+      "post": {
+        "summary": "Create New User",
+        "operationId": "post-user",
+        "responses": {
+          "200": {
+            "description": "New user created!",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/User"
+                },
+                "examples": {
+                  "New User Bob Fellow": {
+                    "value": {
+                      "id": 12,
+                      "firstName": "Bob",
+                      "lastName": "Fellow",
+                      "email": "bob.fellow@gmail.com",
+                      "dateOfBirth": "1996-08-24",
+                      "emailVerified": false,
+                      "createDate": "2020-11-18"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Error: err message"
+          }
+        },
+        "description": "Create/register a new user.",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "description": "",
+                "type": "object",
+                "properties": {
+                  "firstName": {
+                    "type": "string",
+                    "minLength": 1
+                  },
+                  "lastName": {
+                    "type": "string",
+                    "minLength": 1
+                  },
+                  "email": {
+                    "type": "string",
+                    "minLength": 1
+                  },
+                  "password": {
+                    "type": "string",
+                    "minLength": 1
+                  },
+                  "phoneNumber": {
+                    "type": "string",
+                    "minLength": 1
+                  }
+                },
+                "required": [
+                  "email",
+                  "password"
+                ]
+              }
+            }
+          },
+          "description": "Only email and password are required."
+        }
+      },
+      "parameters": []
+    },
+    "/user": {
+      "get": {
+        "summary": "",
+        "operationId": "get-user",
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "400": {
+            "description": "Error: err message"
+          }
+        },
+        "description": "Get all users"
+      },
+      "parameters": []
+    },
+    "/user/login": {
+      "get": {
+        "summary": "Your GET endpoint",
+        "tags": [],
+        "responses": {
+          "200": {
+            "description": "",
+            "headers": {
+              "token": {
+                "schema": {
+                  "type": "string"
+                },
+                "description": "get token for user"
+              }
+            }
+          },
+          "400": {
+            "description": "Something went wrong"
+          },
+          "404": {
+            "description": "Incorrect password/email"
+          }
+        },
+        "operationId": "get-user-login",
+        "description": "Log in with email and password.",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "description": "",
+                "type": "object",
+                "properties": {
+                  "email": {
+                    "type": "string",
+                    "minLength": 1
+                  },
+                  "password": {
+                    "type": "string",
+                    "minLength": 1
+                  }
+                },
+                "required": [
+                  "email",
+                  "password"
+                ]
+              }
+            }
+          },
+          "description": "Login as user with email and password. Get token as response."
+        }
+      }
+    },
+    "/user/delete/{id}": {
+      "get": {
+        "summary": "Your GET endpoint",
+        "tags": [],
+        "responses": {
+          "200": {
+            "description": "Deleted user with id {id}"
+          },
+          "400": {
+            "description": "Something went wrong"
+          }
+        },
+        "operationId": "get-user-delete-:id",
+        "description": "Delete user with user's id."
+      },
+      "parameters": [
+        {
+          "schema": {
+            "type": "string"
+          },
+          "name": "id",
+          "in": "path",
+          "required": true,
+          "description": "user's id"
+        }
+      ]
+    },
+    "/post": {
+      "get": {
+        "summary": "Your GET endpoint",
+        "tags": [],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "description": "",
+                  "type": "object",
+                  "properties": {
+                    "user_id": {
+                      "type": "string",
+                      "minLength": 1
+                    },
+                    "sellerName": {
+                      "type": "string",
+                      "minLength": 1
+                    },
+                    "sellerEmail": {
+                      "type": "string",
+                      "minLength": 1
+                    },
+                    "post": {
+                      "type": "object",
+                      "properties": {
+                        "title": {
+                          "type": "string",
+                          "minLength": 1
+                        },
+                        "description": {
+                          "type": "string",
+                          "minLength": 1
+                        },
+                        "category": {
+                          "type": "string",
+                          "minLength": 1
+                        },
+                        "images": {
+                          "type": "string"
+                        },
+                        "price": {
+                          "type": "string",
+                          "minLength": 1
+                        },
+                        "postedAt": {
+                          "type": "string",
+                          "minLength": 1
+                        },
+                        "delivery": {
+                          "type": "object",
+                          "properties": {
+                            "pickup": {
+                              "type": "boolean"
+                            },
+                            "shipping": {
+                              "type": "boolean"
+                            }
+                          },
+                          "required": [
+                            "pickup",
+                            "shipping"
+                          ]
+                        },
+                        "location": {
+                          "type": "string",
+                          "minLength": 1
+                        }
+                      },
+                      "required": [
+                        "title",
+                        "description",
+                        "category",
+                        "images",
+                        "price",
+                        "postedAt",
+                        "delivery",
+                        "location"
+                      ]
+                    }
+                  },
+                  "required": [
+                    "user_id",
+                    "sellerName",
+                    "sellerEmail",
+                    "post"
+                  ]
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request"
+          }
+        },
+        "operationId": "get-post",
+        "description": "Get all postings."
+      }
+    },
+    "/post/location/{location}": {
+      "get": {
+        "summary": "Your GET endpoint",
+        "tags": [],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "description": "",
+                  "type": "object",
+                  "properties": {
+                    "user_id": {
+                      "type": "string",
+                      "minLength": 1
+                    },
+                    "sellerName": {
+                      "type": "string",
+                      "minLength": 1
+                    },
+                    "sellerEmail": {
+                      "type": "string",
+                      "minLength": 1
+                    },
+                    "post": {
+                      "type": "object",
+                      "properties": {
+                        "title": {
+                          "type": "string",
+                          "minLength": 1
+                        },
+                        "description": {
+                          "type": "string",
+                          "minLength": 1
+                        },
+                        "category": {
+                          "type": "string",
+                          "minLength": 1
+                        },
+                        "images": {
+                          "type": "string"
+                        },
+                        "price": {
+                          "type": "string",
+                          "minLength": 1
+                        },
+                        "postedAt": {
+                          "type": "string",
+                          "minLength": 1
+                        },
+                        "delivery": {
+                          "type": "object",
+                          "properties": {
+                            "pickup": {
+                              "type": "boolean"
+                            },
+                            "shipping": {
+                              "type": "boolean"
+                            }
+                          },
+                          "required": [
+                            "pickup",
+                            "shipping"
+                          ]
+                        },
+                        "location": {
+                          "type": "string",
+                          "minLength": 1
+                        }
+                      },
+                      "required": [
+                        "title",
+                        "description",
+                        "category",
+                        "images",
+                        "price",
+                        "postedAt",
+                        "delivery",
+                        "location"
+                      ]
+                    }
+                  },
+                  "required": [
+                    "user_id",
+                    "sellerName",
+                    "sellerEmail",
+                    "post"
+                  ]
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request"
+          }
+        },
+        "operationId": "get-post-location",
+        "description": "Get postings with certain location, e.g. Oulu"
+      },
+      "parameters": [
+        {
+          "schema": {
+            "type": "string"
+          },
+          "name": "location",
+          "in": "path",
+          "required": true,
+          "description": "location, e.g. Oulu"
+        }
+      ]
+    },
+    "/post/categories/{category}": {
+      "get": {
+        "summary": "Your GET endpoint",
+        "tags": [],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "description": "",
+                  "type": "object",
+                  "properties": {
+                    "user_id": {
+                      "type": "string",
+                      "minLength": 1
+                    },
+                    "sellerName": {
+                      "type": "string",
+                      "minLength": 1
+                    },
+                    "sellerEmail": {
+                      "type": "string",
+                      "minLength": 1
+                    },
+                    "post": {
+                      "type": "object",
+                      "properties": {
+                        "title": {
+                          "type": "string",
+                          "minLength": 1
+                        },
+                        "description": {
+                          "type": "string",
+                          "minLength": 1
+                        },
+                        "category": {
+                          "type": "string",
+                          "minLength": 1
+                        },
+                        "images": {
+                          "type": "string"
+                        },
+                        "price": {
+                          "type": "string",
+                          "minLength": 1
+                        },
+                        "postedAt": {
+                          "type": "string",
+                          "minLength": 1
+                        },
+                        "delivery": {
+                          "type": "object",
+                          "properties": {
+                            "pickup": {
+                              "type": "boolean"
+                            },
+                            "shipping": {
+                              "type": "boolean"
+                            }
+                          },
+                          "required": [
+                            "pickup",
+                            "shipping"
+                          ]
+                        },
+                        "location": {
+                          "type": "string",
+                          "minLength": 1
+                        }
+                      },
+                      "required": [
+                        "title",
+                        "description",
+                        "category",
+                        "images",
+                        "price",
+                        "postedAt",
+                        "delivery",
+                        "location"
+                      ]
+                    }
+                  },
+                  "required": [
+                    "user_id",
+                    "sellerName",
+                    "sellerEmail",
+                    "post"
+                  ]
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request"
+          }
+        },
+        "operationId": "get-post-categories",
+        "description": "Get postings with certaing category, e.g. Furniture"
+      },
+      "parameters": [
+        {
+          "schema": {
+            "type": "string"
+          },
+          "name": "category",
+          "in": "path",
+          "required": true,
+          "description": "post category"
+        }
+      ]
+    },
+    "/post/date/{date}": {
+      "get": {
+        "summary": "Your GET endpoint",
+        "tags": [],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "description": "",
+                  "type": "object",
+                  "properties": {
+                    "user_id": {
+                      "type": "string",
+                      "minLength": 1
+                    },
+                    "sellerName": {
+                      "type": "string",
+                      "minLength": 1
+                    },
+                    "sellerEmail": {
+                      "type": "string",
+                      "minLength": 1
+                    },
+                    "post": {
+                      "type": "object",
+                      "properties": {
+                        "title": {
+                          "type": "string",
+                          "minLength": 1
+                        },
+                        "description": {
+                          "type": "string",
+                          "minLength": 1
+                        },
+                        "category": {
+                          "type": "string",
+                          "minLength": 1
+                        },
+                        "images": {
+                          "type": "string"
+                        },
+                        "price": {
+                          "type": "string",
+                          "minLength": 1
+                        },
+                        "postedAt": {
+                          "type": "string",
+                          "minLength": 1
+                        },
+                        "delivery": {
+                          "type": "object",
+                          "properties": {
+                            "pickup": {
+                              "type": "boolean"
+                            },
+                            "shipping": {
+                              "type": "boolean"
+                            }
+                          },
+                          "required": [
+                            "pickup",
+                            "shipping"
+                          ]
+                        },
+                        "location": {
+                          "type": "string",
+                          "minLength": 1
+                        }
+                      },
+                      "required": [
+                        "title",
+                        "description",
+                        "category",
+                        "images",
+                        "price",
+                        "postedAt",
+                        "delivery",
+                        "location"
+                      ]
+                    }
+                  },
+                  "required": [
+                    "user_id",
+                    "sellerName",
+                    "sellerEmail",
+                    "post"
+                  ]
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request"
+          }
+        },
+        "operationId": "get-post-date",
+        "description": "Get postings per date, e.g. 2020-10-25"
+      },
+      "parameters": [
+        {
+          "schema": {
+            "type": "string"
+          },
+          "name": "date",
+          "in": "path",
+          "required": true,
+          "description": "date, format \"YEAR-MO-DA\""
+        }
+      ]
+    },
+    "/post/new": {
+      "post": {
+        "summary": "",
+        "operationId": "post-post-new",
+        "responses": {
+          "200": {
+            "description": "New post created!"
+          },
+          "400": {
+            "description": "Bad Request"
+          }
+        },
+        "description": "Post a new posting as user.",
+        "parameters": [
+          {
+            "schema": {},
+            "in": "header",
+            "name": "token",
+            "description": "token"
+          }
+        ],
+        "security": [
+          {
+            "token": []
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "description": "",
+                "type": "object",
+                "properties": {
+                  "title": {
+                    "type": "string",
+                    "minLength": 1
+                  },
+                  "description": {
+                    "type": "string",
+                    "minLength": 1
+                  },
+                  "category": {
+                    "type": "string",
+                    "minLength": 1
+                  },
+                  "images": {
+                    "type": "string",
+                    "maxLength": 4
+                  },
+                  "price": {
+                    "type": "string",
+                    "minLength": 1
+                  },
+                  "postedAt": {
+                    "type": "string",
+                    "minLength": 1
+                  },
+                  "delivery": {
+                    "type": "object",
+                    "required": [
+                      "pickup",
+                      "shipping"
+                    ],
+                    "properties": {
+                      "pickup": {
+                        "type": "boolean"
+                      },
+                      "shipping": {
+                        "type": "boolean"
+                      }
+                    }
+                  },
+                  "location": {
+                    "type": "string",
+                    "minLength": 1
+                  }
+                },
+                "required": [
+                  "title",
+                  "description",
+                  "category",
+                  "price",
+                  "postedAt",
+                  "delivery",
+                  "location"
+                ]
+              }
+            }
+          },
+          "description": "Posting body. All expect for images is required."
+        }
+      }
+    },
+    "/post/user": {
+      "get": {
+        "summary": "Your GET endpoint",
+        "tags": [],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "description": "",
+                  "type": "object",
+                  "properties": {
+                    "user_id": {
+                      "type": "string",
+                      "minLength": 1
+                    },
+                    "sellerName": {
+                      "type": "string",
+                      "minLength": 1
+                    },
+                    "sellerEmail": {
+                      "type": "string",
+                      "minLength": 1
+                    },
+                    "post": {
+                      "type": "object",
+                      "properties": {
+                        "title": {
+                          "type": "string",
+                          "minLength": 1
+                        },
+                        "description": {
+                          "type": "string",
+                          "minLength": 1
+                        },
+                        "category": {
+                          "type": "string",
+                          "minLength": 1
+                        },
+                        "images": {
+                          "type": "string"
+                        },
+                        "price": {
+                          "type": "string",
+                          "minLength": 1
+                        },
+                        "postedAt": {
+                          "type": "string",
+                          "minLength": 1
+                        },
+                        "delivery": {
+                          "type": "object",
+                          "properties": {
+                            "pickup": {
+                              "type": "boolean"
+                            },
+                            "shipping": {
+                              "type": "boolean"
+                            }
+                          },
+                          "required": [
+                            "pickup",
+                            "shipping"
+                          ]
+                        },
+                        "location": {
+                          "type": "string",
+                          "minLength": 1
+                        }
+                      },
+                      "required": [
+                        "title",
+                        "description",
+                        "category",
+                        "images",
+                        "price",
+                        "postedAt",
+                        "delivery",
+                        "location"
+                      ]
+                    }
+                  },
+                  "required": [
+                    "user_id",
+                    "sellerName",
+                    "sellerEmail",
+                    "post"
+                  ]
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request"
+          }
+        },
+        "operationId": "get-post-user",
+        "parameters": [
+          {
+            "schema": {},
+            "in": "header",
+            "name": "token",
+            "description": "token",
+            "required": true
+          }
+        ],
+        "security": [
+          {
+            "token": []
+          }
+        ],
+        "description": "Get posts by user (identified via token)."
+      }
+    },
+    "/post/user/{id}": {
+      "delete": {
+        "summary": "",
+        "operationId": "delete-post-user",
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "400": {
+            "description": "Something went wrong"
+          },
+          "": {
+            "description": "Deleted post"
+          }
+        },
+        "description": "Delete user's post by post id.",
+        "security": [
+          {
+            "token": []
+          }
+        ],
+        "parameters": [
+          {
+            "schema": {},
+            "in": "header",
+            "name": "token",
+            "description": "token"
+          }
+        ]
+      },
+      "parameters": [
+        {
+          "schema": {
+            "type": "string"
+          },
+          "name": "id",
+          "in": "path",
+          "required": true,
+          "description": "id of post"
+        }
+      ]
+    }
+  },
+  "components": {
+    "schemas": {},
+    "securitySchemes": {
+      "token": {
+        "type": "http",
+        "scheme": "bearer",
+        "description": "token"
+      }
+    }
+  }
+}
