@@ -18,9 +18,7 @@ app.use(express.static(__dirname + '/public'));
 app.use('/post', postRoute);
 app.use('/user', userRoute);
 
-app.get('/', function (req, res) {
-    res.render('index', { title: 'Hey', message: 'Hello there!' })
-    });
+app.set('views', __dirname + "/views");
    
 app.listen(process.env.PORT || 3000, () => {
     console.log("listening on 3000")
