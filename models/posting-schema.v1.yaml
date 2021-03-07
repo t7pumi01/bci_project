@@ -1,0 +1,51 @@
+title: posting-schema
+type: object
+properties:
+  user_id:
+    type: string
+  sellerName:
+    type: string
+  sellerEmail:
+    type: string
+  post:
+    type: object
+    properties:
+      title:
+        type: string
+      description:
+        type: string
+      category:
+        type: array
+        items:
+          type: string
+      images:
+        type: array
+        items:
+          type: string
+      price:
+        type: number
+      postedAt:
+        type: string
+        description: 'Date, format "year-month-day" e.g. 2021-06-04'
+      delivery:
+        type: object
+        required:
+          - pickup
+          - shipping
+        properties:
+          pickup:
+            type: boolean
+          shipping:
+            type: boolean
+      location:
+        type: array
+        items:
+          type: string
+    required:
+      - title
+      - description
+      - category
+      - price
+      - postedAt
+      - location
+x-examples: {}
