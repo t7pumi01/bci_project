@@ -17,7 +17,7 @@ app.use('/post', postRoute);
 app.use('/user', userRoute);
 
 app.get('/', (req, res) => {
-    res.render('index.html');
+    res.sendFile('/index.html');
 });
 
 app.listen(process.env.PORT || 3000, () => {
