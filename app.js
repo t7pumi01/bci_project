@@ -1,6 +1,7 @@
 const express = require('express');
 const bodyParser = require('body-parser');
 const passport = require('passport');
+const path = require('path');
 
 const postRoute = require('./routes/postingRoute');
 const userRoute = require('./routes/userRoute');
