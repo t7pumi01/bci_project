@@ -1,5 +1,5 @@
 body {
-    background-color: rgba(12, 12, 12, 0.63);
+    background-color: black;
     padding: 0;
     margin: 0px;
     font-family: 'Lato', sans-serif;
@@ -12,47 +12,9 @@ body {
     height: 90vh;
 }
 
-input:focus,
-button:focus {
-    outline: none;
-}
-
-button {
-    background: #a463da;
-    color: #fff;
-    border: 0px;
-    width: 100%;
-    padding: 10px;
-    margin: 5px;
-    font-size: 20px;
-    cursor: pointer;
-}
-
-button:hover {
-    background-color: #b480df;
-}
-
-.checkbox {
-    color: #808080;
-    padding-bottom: 10px;
-    font-size: 15px;
-    font-style: italic;
-}
-
-h3 {
-    font-size: 24px;
-    text-align: center;
-    color: #fff;
-}
-
 p {
     text-align: center;
     color: #000;
-}
-
-.fa {
-    float: left;
-    font-size: 18px;
 }
 
 a {
@@ -63,10 +25,4 @@ a {
 
 a:hover {
     text-decoration: underline;
-}
-
-.label {
-    font-size: 40px;
-    text-align: center;
-    color: #000;
 }
