@@ -12,12 +12,10 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 app.use(passport.initialize());
 app.use(passport.session());
-app.set('view engine', 'pug')
-app.use(express.static(__dirname + '/public'));
 
 app.use('/post', postRoute);
 app.use('/user', userRoute);
-   
+
 app.listen(process.env.PORT || 3000, () => {
     console.log("listening on 3000")
     });
