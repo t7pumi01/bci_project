@@ -1,0 +1,308 @@
+{
+	"info": {
+		"_postman_id": "533d00fe-e662-406b-bc5f-763da3337678",
+		"name": "bci project",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "GET ALL USERS",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3000/user",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"user"
+					]
+				},
+				"description": "Get all users (for testing only)"
+			},
+			"response": []
+		},
+		{
+			"name": "LOGIN AS USER",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"email\": \"testi@email.com\",\r\n    \"password\": \"d5f6g7\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3000/user/login",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"user",
+						"login"
+					]
+				},
+				"description": "Log in as testi@email.com"
+			},
+			"response": []
+		},
+		{
+			"name": "REGISTER A NEW USER",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"firstName\": \"Hopsu\",\r\n    \"lastName\": \"Kopsunen\",\r\n    \"email\": \"hp@email.com\",\r\n    \"password\": \"HopsunPwd\",\r\n    \"phoneNumber\": \"0485239583\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3000/user/register",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"user",
+						"register"
+					]
+				},
+				"description": "Register a new user"
+			},
+			"response": []
+		},
+		{
+			"name": "DELETE USER BY ID",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3000/user/delete/{id}",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"user",
+						"delete",
+						"{id}"
+					]
+				},
+				"description": "Delete user by id"
+			},
+			"response": []
+		},
+		{
+			"name": "GET ALL POSTS",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3000/post/",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"post",
+						""
+					]
+				},
+				"description": "Get all posts"
+			},
+			"response": []
+		},
+		{
+			"name": "GET POSTINGS BY LOCATION",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3000/post/location/Oulu",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"post",
+						"location",
+						"Oulu"
+					]
+				},
+				"description": "Get poostings by location (city, e.g. Oulu)"
+			},
+			"response": []
+		},
+		{
+			"name": "GET POSTINGS BY CATEGORY",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3000/post/categories/Furniture",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"post",
+						"categories",
+						"Furniture"
+					]
+				},
+				"description": "Get postings by category"
+			},
+			"response": []
+		},
+		{
+			"name": "GET POSTINGS BY DATE (in format 2021-00-00)",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3000/post/date/2021-03-07",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"post",
+						"date",
+						"2021-03-07"
+					]
+				},
+				"description": "Get postings by date"
+			},
+			"response": []
+		},
+		{
+			"name": "GET USER'S POSTS WITH TOKEN",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VyIjp7ImlkIjoiNjAzOWExN2E3YzlmZWEzYmJjYzkyM2RjIiwiZW1haWwiOiJ0ZXN0aUBlbWFpbC5jb20ifX0.3oEWZjHz9ADxlkaPpqx0MYCAkl5FnumI1J12pp_McWo",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3000/post/user/",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"post",
+						"user",
+						""
+					]
+				},
+				"description": "Get postings by current user with auth token"
+			},
+			"response": []
+		},
+		{
+			"name": "DELETE USER'S (AUTH TOKEN) POST BY POST ID",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VyIjp7ImlkIjoiNjAzOWExN2E3YzlmZWEzYmJjYzkyM2RjIiwiZW1haWwiOiJ0ZXN0aUBlbWFpbC5jb20ifX0.3oEWZjHz9ADxlkaPpqx0MYCAkl5FnumI1J12pp_McWo",
+							"type": "string"
+						}
+					]
+				},
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3000/post/user/6044ee5e1d7d23322c5723ee",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"post",
+						"user",
+						"6044ee5e1d7d23322c5723ee"
+					]
+				},
+				"description": "Delete user's posting by post id"
+			},
+			"response": []
+		},
+		{
+			"name": "POST A NEW POSTING AS USER (AUTH TOKEN)",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VyIjp7ImlkIjoiNjAzOWExN2E3YzlmZWEzYmJjYzkyM2RjIiwiZW1haWwiOiJ0ZXN0aUBlbWFpbC5jb20ifX0.3oEWZjHz9ADxlkaPpqx0MYCAkl5FnumI1J12pp_McWo",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"title\": \"Kitchen chairs\",\r\n    \"description\": \"Four chairs from a kitchen table set. Black, made of wood and steel. Still in good shape although a bit worn out. Only selling as whole set\",\r\n    \"category\": \"Furniture\",\r\n    \"images\": \"\",\r\n    \"price\": \"80\",\r\n    \"postedAt\": \"2021-03-07\",\r\n    \"delivery\": { \"pickup\": true, \"shipping\": false},\r\n    \"location\": \"Oulu\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3000/post/new",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"post",
+						"new"
+					]
+				},
+				"description": "Make a new posting as user"
+			},
+			"response": []
+		}
+	]
+}
