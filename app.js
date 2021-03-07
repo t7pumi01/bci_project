@@ -16,6 +16,10 @@ app.use(passport.session());
 app.use('/post', postRoute);
 app.use('/user', userRoute);
 
+app.get('/', (req, res) => {
+    res.render('index.html');
+});
+
 app.listen(process.env.PORT || 3000, () => {
     console.log("listening on 3000")
     });
