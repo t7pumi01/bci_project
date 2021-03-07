@@ -3,6 +3,12 @@ var router = express.Router();
 const db = require("../models");
 const jwtAuth = require('./jwt-authenticate');
 
+function getUserInfo(iidee) {
+    db.User.find()
+    .where('id').equals(iidee)
+    .then(user => res.json("Seller email: " + user.email));
+}
+
 // Get all postings
 router.get("/", function(req,res) {
     db.Posting.find()
@@ -15,6 +21,7 @@ router.get("/location/:location", function(req,res) {
     db.Posting.find()
     .where('post.location').equals(req.params.location)
     .then((postings) => {
+        getUserInfo(postings.user_id);
         res.json(postings).status(200);
     })
     .catch((err) => {

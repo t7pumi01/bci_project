@@ -4,23 +4,17 @@ const Schema = mongoose.Schema;
 const PostingSchema = new Schema({
     user_id: String,
     post: {
-        title: String,
-        description: String,
-        category: [String],
-        images: Array,
-        price: Number,
-        postedAt: String,
-        delivery: { pickup: Boolean, shipping: Boolean },
-        location: [String]
+        title: { type: String, required: [true, "Title required"] },
+        description: { type: String, required: [true, "Description required"] },
+        category: [{ type: String, required: [true, "Category required"] }],
+        images: [ String ],
+        price: { type: Number, required: [true, "Title required"] },
+        postedAt: { type: String, required: [true, "Date required"] },
+        delivery: { pickup: { type: Boolean, required: [true, "Delivery option required"]},
+                    shipping: { type: Boolean, required: [true, "Delivery option required"]}},
+        location: [{ type: String, required: [true, "Location required"] }]
      }
-    // orders: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Order' }]
 });
 
 const Posting = mongoose.model("Posting", PostingSchema);
-/*
-Posting.deleteMany({}, function (err) {
-    if(err) console.log(err);
-    console.log("Successful deletion")
-    });
-*/
 module.exports = Posting;
