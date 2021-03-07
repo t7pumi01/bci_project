@@ -71,5 +71,30 @@
       ]
     }
   },
-  "x-examples": {}
+  "x-examples": {
+    "post": {
+      "user_id": "45686523ghhk45g",
+      "sellerName": "Pekka Pouta",
+      "sellerEmail": "poudan@email.fi",
+      "post": {
+        "title": "Tuoli",
+        "description": "Tosi hyvä tuoli",
+        "category": [
+          "Huonekalut"
+        ],
+        "images": [
+          "1.pic"
+        ],
+        "price": 20,
+        "postedAt": "2020-12-11",
+        "delivery": {
+          "pickup": true,
+          "shipping": false
+        },
+        "location": [
+          "Helsinki"
+        ]
+      }
+    }
+  }
 }
