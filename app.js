@@ -19,6 +19,9 @@ app.use('/post', postRoute);
 app.use('/user', userRoute);
 
 app.set('views', __dirname + "/views");
+app.get('/', function (req,res) {
+    res.render('/views/index')
+})
    
 app.listen(process.env.PORT || 3000, () => {
     console.log("listening on 3000")
