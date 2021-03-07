@@ -27,5 +27,15 @@
   "required": [
     "email",
     "password"
-  ]
+  ],
+  "x-examples": {
+    "Pekka": {
+      "firstName": "Pekka",
+      "lastName": "Pouta",
+      "email": "poudan@email.fi",
+      "password": "AurinkoPaistaa",
+      "phoneNumber": "0509877890",
+      "createdAt": "2020-02-10T13:00:23"
+    }
+  }
 }
