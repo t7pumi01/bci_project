@@ -5,17 +5,18 @@
         
         <style>
             body {
-                background-color: rgb(148, 148, 148);
+                background-color: rgb(28, 18, 32);
                 padding: 0;
                 margin: 0px;
-                font-family: 'Lato', sans-serif;
+                font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+                font-size: larger;
             }
 
             #main {
-                display: flex;
-                justify-content: center;
-                align-items: center;
-                height: 90vh;
+                margin: 50px auto auto auto;
+                padding: 50px;
+                width: 50%;
+                border: 5px solid #000;
             }
 
             p {
@@ -23,10 +24,15 @@
                 color: #000;
             }
 
+            p.api {
+                padding-top:20px;
+                font-size: 30px;
+                text-decoration: underline;
+            }
+
             a {
-                padding-left: 5px;
                 text-decoration: none;
-                color: rgb(173, 126, 212);
+                color: #9b22ff;
             }
 
             a:hover {
@@ -38,9 +44,14 @@
     <body>
 
         <div id="main">
-            <p><a href="/user/">Users</a></p>
-            <p><a href="/post/">Posts</a></p>
-            <p><a href="https://documenter.getpostman.com/view/13365381/Tz5jg1b6">API documentation, made with Postman</a></p>
+            <p><a href="/user/">All Users</a></p>
+
+            <p><a href="/post/">All Postings</a></p>
+            <p><a href="/post/location/Oulu">Postings from Oulu</a></p>
+            <p><a href="/post/categories/Furniture">Postings in Decoration category</a></p>
+            <p><a href="/post/date/2021-03-07">Postings made 7.3.2021</a></p>
+
+            <p class="api"><a href="https://documenter.getpostman.com/view/13365381/Tz5jg1fX">API documentation, made with Postman</a></p>
         </div>
 
     </body>
