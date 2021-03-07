@@ -4,3 +4,5 @@ My solution for "web application API which primary function is to serve as a pla
 OpenAPI documents (made with Stoplight & Postman) can be found from folder "models", and also from file "bci project Miina.postman_collection.json" (latter is not as comprehensive as the one's in /models/)
 
 Project is running on: https://bci-miina-project.herokuapp.com/
+
+I did not do the Mocha tests (only tried them out) or any real validations for request bodys.
