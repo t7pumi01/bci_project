@@ -1,7 +1,5 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
-const bcrypt = require('bcryptjs');
-const Posting = require('./Posting.model');
 
 const UserSchema = new Schema({
     firstName: String,

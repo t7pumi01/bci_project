@@ -9,16 +9,10 @@ html(lang="en")
     link(rel='stylesheet', href='style.css')
   body
     #main
-     form(action="#")
-       //div.label login form
-       div.username
-        input(type="text" placeholder="Email")
-       div.password
-        input(type="password" placeholder="Password")
-       div.checkbox
-        input(type='checkbox' name='agreement' checked)
-        | Remember me
-       button(type="button") Login
-       p
-        | Don't have an account?
-        a(href="#") Sign up
+     p Routes: 
+        li
+            a(href="/post/") Postings
+        li
+            a(href="/user/") All users (for testing)
+        li
+            a(href="/post/location/Oulu") Postings from Oulu

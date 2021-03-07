@@ -18,13 +18,14 @@ passport.use(new JwtStrategy(options, function(jwt_payload, done) {
 }));
 
 // Get all users
+// This is made only for testing purposes, to be deleted after development
 router.get("/", (req, res) => {
     db.User.find()
     .then(users => res.json(users).status(200))
     .catch(err => res.status(400).json("Error: " + err))
 });
 
-// Delete user by id
+// Delete user by user id
 router.delete("/delete/:id", (req, res) => {
     db.User.deleteOne({ _id: req.params.id }, (err, user) => {
         if (err) {
@@ -34,11 +35,11 @@ router.delete("/delete/:id", (req, res) => {
         if (!user) {
             return res.status(404).json("Email incorrect");
         }
-        return res.status(200).json("Deleted user: " + req.params.email);
+        return res.status(200).json("Deleted user with id " + req.params.id);
     })
 });
 
-// Login
+// Login with email and password, get token for auth
 router.get("/login", (req, res) => {  
     const email = req.body.email
     const send_password = req.body.password
@@ -75,17 +76,17 @@ router.post("/register", (req, res) => {
     const phoneNumber = req.body.phoneNumber
     const createdAt = Date.now()
     const newUser = new db.User({
-      firstName,
-      lastName,
-      email,
-      password,
-      phoneNumber,
-      createdAt
-    })
-    newUser
-      .save()
-      .then(() => res.json("New user created!").status(200))
-      .catch(err => res.status(400).json("Error: " + err))
+        firstName,
+        lastName,
+        email,
+        password,
+        phoneNumber,
+        createdAt
+        })
+        newUser
+        .save()
+        .then(() => res.json("New user created!").status(200))
+        .catch(err => res.status(400).json("Error: " + err))
 });
 
 module.exports = router;

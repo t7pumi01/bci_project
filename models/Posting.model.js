@@ -3,6 +3,8 @@ const Schema = mongoose.Schema;
 
 const PostingSchema = new Schema({
     user_id: String,
+    sellerName: String,
+    sellerEmail: String,
     post: {
         title: { type: String, required: [true, "Title required"] },
         description: { type: String, required: [true, "Description required"] },

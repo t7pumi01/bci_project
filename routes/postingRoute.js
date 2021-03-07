@@ -3,16 +3,10 @@ var router = express.Router();
 const db = require("../models");
 const jwtAuth = require('./jwt-authenticate');
 
-function getUserInfo(iidee) {
-    db.User.find()
-    .where('id').equals(iidee)
-    .then(user => res.json("Seller email: " + user.email));
-}
-
 // Get all postings
 router.get("/", function(req,res) {
     db.Posting.find()
-    .then(posts => res.json(posts).status(200))
+    .then(postings => res.json(postings).status(200))
     .catch(err => res.status(400).json(err))
 });
 
@@ -20,37 +14,27 @@ router.get("/", function(req,res) {
 router.get("/location/:location", function(req,res) {
     db.Posting.find()
     .where('post.location').equals(req.params.location)
-    .then((postings) => {
+    .then((postings) => { 
         getUserInfo(postings.user_id);
         res.json(postings).status(200);
     })
-    .catch((err) => {
-        res.json(err).status(400);
-    })
+    .catch(err => res.json(err).status(400))
 });
 
 // Get postings by category
 router.get("/categories/:category", function(req,res) {
     db.Posting.find()
     .where('post.category').equals(req.params.category)
-    .then((postings) => {
-        res.json(postings).status(200);
-    })
-    .catch((err) => {
-        res.json(err).status(400);
-    })
+    .then(postings => res.json(postings).status(200))
+    .catch(err => res.json(err).status(400))
 });
 
 // Get postings by date
 router.get("/date/:date", function(req,res) {
     db.Posting.find()
         .where('post.postedAt').equals(req.params.date)
-        .then((postings) => {
-            res.json(postings).status(200);
-        })
-        .catch((err) => {
-            res.json(err).status(400);
-        })
+        .then(postings => res.json(postings).status(200))
+        .catch(err => res.json(err).status(400))
 });
 
 // Create a new post as authorized user
@@ -58,6 +42,8 @@ router.get("/date/:date", function(req,res) {
 router.post("/new", jwtAuth, function(req, res) {
     const newPost = new db.Posting({
         user_id: req.user.id,
+        sellerName: req.user.firstName + " " + req.user.lastName,
+        sellerEmail: req.user.email,
         post: {
             title: req.body.title,
             description: req.body.description,
@@ -80,15 +66,12 @@ router.post("/new", jwtAuth, function(req, res) {
 router.get("/user", jwtAuth, function(req,res) {
     db.Posting.find()
     .where('user_id').equals(req.user.id)
-    .then((postings) => {
-        res.json(postings).status(200);
-    })
-    .catch((err) => {
-        res.json(err).status(400);
-    })
+    .then(postings => res.json(postings).status(200))
+    .catch(err => res.json(err).status(400))
 });
  
-
+// Delete authorized user's post by post id
+// give token as header
 router.delete("/user/:id", jwtAuth, function(req,res) {
     db.Posting.deleteOne({_id: req.params.id}, (err, user) => {
         if (err) {
