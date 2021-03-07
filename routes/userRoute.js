@@ -32,9 +32,6 @@ router.delete("/delete/:id", (req, res) => {
             console.log(err);
             return res.status(400).json("Something went wrong");
         }
-        if (!user) {
-            return res.status(404).json("Email incorrect");
-        }
         return res.status(200).json("Deleted user with id " + req.params.id);
     })
 });

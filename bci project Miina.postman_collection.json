@@ -1,7 +1,7 @@
 {
 	"info": {
-		"_postman_id": "533d00fe-e662-406b-bc5f-763da3337678",
-		"name": "bci project",
+		"_postman_id": "d86d2bc7-4610-4c63-a920-6bee699efc08",
+		"name": "bci project Miina",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
 	"item": [
@@ -14,12 +14,13 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "http://localhost:3000/user",
-					"protocol": "http",
+					"raw": "https://bci-miina-project.herokuapp.com/user",
+					"protocol": "https",
 					"host": [
-						"localhost"
+						"bci-miina-project",
+						"herokuapp",
+						"com"
 					],
-					"port": "3000",
 					"path": [
 						"user"
 					]
@@ -46,12 +47,13 @@
 					}
 				},
 				"url": {
-					"raw": "http://localhost:3000/user/login",
-					"protocol": "http",
+					"raw": "https://bci-miina-project.herokuapp.com/user/login",
+					"protocol": "https",
 					"host": [
-						"localhost"
+						"bci-miina-project",
+						"herokuapp",
+						"com"
 					],
-					"port": "3000",
 					"path": [
 						"user",
 						"login"
@@ -76,12 +78,13 @@
 					}
 				},
 				"url": {
-					"raw": "http://localhost:3000/user/register",
-					"protocol": "http",
+					"raw": "https://bci-miina-project.herokuapp.com/user/register",
+					"protocol": "https",
 					"host": [
-						"localhost"
+						"bci-miina-project",
+						"herokuapp",
+						"com"
 					],
-					"port": "3000",
 					"path": [
 						"user",
 						"register"
@@ -97,12 +100,13 @@
 				"method": "DELETE",
 				"header": [],
 				"url": {
-					"raw": "http://localhost:3000/user/delete/{id}",
-					"protocol": "http",
+					"raw": "https://bci-miina-project.herokuapp.com/user/delete/{id}",
+					"protocol": "https",
 					"host": [
-						"localhost"
+						"bci-miina-project",
+						"herokuapp",
+						"com"
 					],
-					"port": "3000",
 					"path": [
 						"user",
 						"delete",
@@ -119,12 +123,13 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "http://localhost:3000/post/",
-					"protocol": "http",
+					"raw": "https://bci-miina-project.herokuapp.com/post/",
+					"protocol": "https",
 					"host": [
-						"localhost"
+						"bci-miina-project",
+						"herokuapp",
+						"com"
 					],
-					"port": "3000",
 					"path": [
 						"post",
 						""
@@ -140,16 +145,17 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "http://localhost:3000/post/location/Oulu",
-					"protocol": "http",
+					"raw": "https://bci-miina-project.herokuapp.com/post/location/{location}",
+					"protocol": "https",
 					"host": [
-						"localhost"
+						"bci-miina-project",
+						"herokuapp",
+						"com"
 					],
-					"port": "3000",
 					"path": [
 						"post",
 						"location",
-						"Oulu"
+						"{location}"
 					]
 				},
 				"description": "Get poostings by location (city, e.g. Oulu)"
@@ -162,16 +168,17 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "http://localhost:3000/post/categories/Furniture",
-					"protocol": "http",
+					"raw": "https://bci-miina-project.herokuapp.com/post/categories/{category}",
+					"protocol": "https",
 					"host": [
-						"localhost"
+						"bci-miina-project",
+						"herokuapp",
+						"com"
 					],
-					"port": "3000",
 					"path": [
 						"post",
 						"categories",
-						"Furniture"
+						"{category}"
 					]
 				},
 				"description": "Get postings by category"
@@ -184,16 +191,17 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "http://localhost:3000/post/date/2021-03-07",
-					"protocol": "http",
+					"raw": "https://bci-miina-project.herokuapp.com/post/date/{date}",
+					"protocol": "https",
 					"host": [
-						"localhost"
+						"bci-miina-project",
+						"herokuapp",
+						"com"
 					],
-					"port": "3000",
 					"path": [
 						"post",
 						"date",
-						"2021-03-07"
+						"{date}"
 					]
 				},
 				"description": "Get postings by date"
@@ -216,12 +224,13 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "http://localhost:3000/post/user/",
-					"protocol": "http",
+					"raw": "https://bci-miina-project.herokuapp.com/post/user/",
+					"protocol": "https",
 					"host": [
-						"localhost"
+						"bci-miina-project",
+						"herokuapp",
+						"com"
 					],
-					"port": "3000",
 					"path": [
 						"post",
 						"user",
@@ -248,16 +257,17 @@
 				"method": "DELETE",
 				"header": [],
 				"url": {
-					"raw": "http://localhost:3000/post/user/6044ee5e1d7d23322c5723ee",
-					"protocol": "http",
+					"raw": "https://bci-miina-project.herokuapp.com/post/user/{postid}",
+					"protocol": "https",
 					"host": [
-						"localhost"
+						"bci-miina-project",
+						"herokuapp",
+						"com"
 					],
-					"port": "3000",
 					"path": [
 						"post",
 						"user",
-						"6044ee5e1d7d23322c5723ee"
+						"{postid}"
 					]
 				},
 				"description": "Delete user's posting by post id"
@@ -289,12 +299,13 @@
 					}
 				},
 				"url": {
-					"raw": "http://localhost:3000/post/new",
-					"protocol": "http",
+					"raw": "https://bci-miina-project.herokuapp.com/post/new",
+					"protocol": "https",
 					"host": [
-						"localhost"
+						"bci-miina-project",
+						"herokuapp",
+						"com"
 					],
-					"port": "3000",
 					"path": [
 						"post",
 						"new"
