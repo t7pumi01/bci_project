@@ -17,10 +17,6 @@ app.use(express.static(__dirname + '/public'));
 
 app.use('/post', postRoute);
 app.use('/user', userRoute);
-
-app.get('/', function (req,res) {
-    res.render('/index')
-})
    
 app.listen(process.env.PORT || 3000, () => {
     console.log("listening on 3000")
